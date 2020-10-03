@@ -1,6 +1,7 @@
 package com.example.smack
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -35,4 +36,18 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun loginBtnNavClicked(view: View) {
+
+    }
+
+    fun addChannelClicked(view: View) {
+
+    }
+
+    fun sendMsgBtnClicked(view: View) {
+
+    }
+
+
 }
