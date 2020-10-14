@@ -22,7 +22,7 @@ class CreateUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user)
-        createSpinner.visibility = View.INVISIBLE
+        enableSpinner(false)
     }
 
     fun generateUserAvatar(view: View) {
@@ -78,13 +78,12 @@ class CreateUserActivity : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "Please fill out the username, email, and password", Toast.LENGTH_LONG).show()
-            enableSpinner(false)
+            errorToast("Please fill out the username, email, and password")
         }
     }
 
-    fun errorToast() {
-        Toast.makeText(this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show()
+    fun errorToast(errorMessage: String = "Something went wrong, please try again!") {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
         enableSpinner(false)
     }
 
