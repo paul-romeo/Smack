@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Make sure that the email and password are not empty before proceeding
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            AuthService.loginUser(this, email, password) { loginSuccess ->
+            AuthService.loginUser(email, password) { loginSuccess ->
                 if (loginSuccess) {
                     AuthService.findUserByEmail(this) { findSuccess ->
                         if (findSuccess) {
