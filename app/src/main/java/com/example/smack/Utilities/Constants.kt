@@ -10,3 +10,5 @@ const val URL_GET_USER = "${ BASE_URL}user/byEmail/"
 const val BROADCAST_USER_DATA_CHANGE = "BROADCAST_USER_DATA_CHANGE"
 const val URL_GET_CHANNELS = "${BASE_URL}channel"
 const val SOCKET_URL = "http://192.168.1.233:3005/"
+const val URL_GET_MESSAGES = "${BASE_URL}message/byChannel/"
+
