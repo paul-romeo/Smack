@@ -77,6 +77,11 @@ class MainActivity : AppCompatActivity() {
         hideKeyboard()
 
         setupAdapters()
+        LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver, IntentFilter(
+            BROADCAST_USER_DATA_CHANGE))
+        socket.connect()
+        socket.on("channelCreated", onNewChannel)
+        socket.on("messageCreated", onNewMessage)
 
         if (App.prefs.isLoggedIn) {
             channel_list.setOnItemClickListener { _, _, i, _ ->
@@ -90,14 +95,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver, IntentFilter(
-            BROADCAST_USER_DATA_CHANGE))
-        socket.connect()
-        socket.on("channelCreated", onNewChannel)
-        socket.on("messageCreated", onNewMessage)
-    }
+//    override fun onResume() {
+//        super.onResume()
+////        LocalBroadcastManager.getInstance(this).registerReceiver(userDataChangeReceiver, IntentFilter(
+////            BROADCAST_USER_DATA_CHANGE))
+//        socket.connect()
+//        socket.on("channelCreated", onNewChannel)
+//        socket.on("messageCreated", onNewMessage)
+//    }
 
 
     override fun onDestroy() {
@@ -173,6 +178,7 @@ class MainActivity : AppCompatActivity() {
             userImageNavHeader.setImageResource(R.drawable.profiledefault)
             userImageNavHeader.setBackgroundColor(Color.TRANSPARENT)
             loginBtnNavHeader.text = "Login"
+            mainChannelName.text = "Please login"
 
         } else {  // goto the login page
             val loginIntent = Intent(this, LoginActivity::class.java)
